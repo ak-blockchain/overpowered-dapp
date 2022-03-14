@@ -35,8 +35,8 @@
         </button>
         
     </div>
-    
-<div id="pairAddressBlock">
+
+    <div id="pairAddressBlock">
         <h6 class="pairAddress">OP:&nbsp &nbsp
             <a id="pair" class="pairHref" href="https://bscscan.com" target="_blank" rel="noopener noreferrer">
                 0x000...000
@@ -59,15 +59,15 @@
     </div>
 
     <div id="cryptologosbar">
-        <a href="https://bscscan.com/address/0x78618c5114Cf2B71A3fe0Af9d7c5aEb129E90487" target="_blank" rel="noopener noreferrer" style="color: transparent">
+        <a href="https://bscscan.com" target="_blank" rel="noopener noreferrer" style="color: transparent">
         <img class="cryptologo" src="assets/cryptologos/bscscan.png">
         </a>
 
-        <a href="https://t.me/virusdaoen" target="_blank" rel="noopener noreferrer" style="color: transparent">
+        <a href="https://t.me/overpoweredbsc" target="_blank" rel="noopener noreferrer" style="color: transparent">
             <img class="cryptologo" src="assets/cryptologos/telegram.png">
         </a>
 
-        <a href="https://twitter.com/virusdaoapp" target="_blank" rel="noopener noreferrer" style="color: transparent">
+        <a href="https://twitter.com/overoverpowered" target="_blank" rel="noopener noreferrer" style="color: transparent">
         <img class="cryptologo" src="assets/cryptologos/twitter.png">
         </a>
 
@@ -179,10 +179,10 @@
 
             <tr class="listRow">
                 <td class="listLeft"> 
-                    <h4>Current OverPowered Price</h4>
+                    <h4>Current Overpowered Price</h4>
                 </td>
                 <td class="listRight">
-                    <h3 id="accountPrice">10000</h3>
+                    <h3 id="accountPrice">0</h3>
                 </td>
             </tr>
 
@@ -191,7 +191,7 @@
                     <h4>Next Reward Amount</h4>
                 </td>
                 <td class="listRight">
-                    <h3>0 OP</h3>
+                    <h3 id="accountNextReward">0 OP</h3>
                 </td>
             </tr>
 
@@ -200,25 +200,7 @@
                     <h4>Next Reward Amount USD</h4>
                 </td>
                 <td class="listRight">
-                    <h3>$0.00</h3>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="listLeft"> 
-                    <h4>Next Reward Yield</h4>
-                </td>
-                <td class="listRight">
-                    <h3>$0.00</h3>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="listLeft"> 
-                    <h4>ROI (1-day-rate) USD</h4>
-                </td>
-                <td class="listRight">
-                    <h3>$0.00</h3>
+                    <h3 id="accountNextUSD">$0.00</h3>
                 </td>
             </tr>
 
@@ -227,7 +209,7 @@
                     <h4>ROI (5-day-rate)</h4>
                 </td>
                 <td class="listRight">
-                    <h3>ROI (5-day-rate) USD</h3>
+                    <h3>11.96%</h3>
                 </td>
             </tr>
 
@@ -269,8 +251,8 @@
 
         <div class="inputBlock right" id="APYBlock">
             <h5 class="inputLabel">APY (%)</h5>
-            <input class="stakeInput" id="apyInput" placeholder="0" value="383025.8" oninput="updateSlider(-1)">
-                <button class="maxCalc" id="maxSafuuAmount" onclick="currentAPY()"> CURRENT </button> 
+            <input class="stakeInput" id="apyInput" placeholder="0" value="383025.8" oninput="updateSlider(-1)" disabled="disabled">
+              <!--  <button class="maxCalc" id="maxSafuuAmount" onclick="currentAPY()"></button> -->
             </input>
         </div>
 
@@ -304,7 +286,7 @@
           </div>
 
     </div>
-     <script src="obcss.js"></script> 
+    <script src="obcss.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
     <script src="dapp.js"></script>
