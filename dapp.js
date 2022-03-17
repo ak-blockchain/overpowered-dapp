@@ -2,7 +2,7 @@
 const serverUrl = "https://msbsejcr97ct.usemoralis.com:2053/server";
 const appId = "b8h417TrHPsmSiWzVY4HsaBgoWO5SMl9Rs0T5CIx";
 
-const DECIMALS = 9;
+const DECIMALS = 5;
 const contractAddress = "0xd51CB10cc1607e86A5def54EE3bE806A7df8528b";
 const pairAddress = "0xC39B991A42A961eEB390059a82A337D84e68afB7";
 
@@ -15,7 +15,7 @@ var days = 1;
 let sharedValues = {
 	price: 0,
 	yourBalance: 0,
-	apy: 383025.8
+	apy: 400977
 }
 
 Moralis.start({ serverUrl, appId });
