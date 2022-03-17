@@ -1,1 +1,1270 @@
-const _0x4e0700=_0x1331;(function(_0x26c802,_0x45b90b){const _0x527c3b=_0x1331,_0x5ec342=_0x26c802();while(!![]){try{const _0xa435d1=-parseInt(_0x527c3b(0x158))/0x1+-parseInt(_0x527c3b(0xca))/0x2+parseInt(_0x527c3b(0x12c))/0x3+-parseInt(_0x527c3b(0xf2))/0x4+-parseInt(_0x527c3b(0xf4))/0x5+parseInt(_0x527c3b(0x123))/0x6*(parseInt(_0x527c3b(0x13f))/0x7)+parseInt(_0x527c3b(0xc3))/0x8;if(_0xa435d1===_0x45b90b)break;else _0x5ec342['push'](_0x5ec342['shift']());}catch(_0xd21326){_0x5ec342['push'](_0x5ec342['shift']());}}}(_0x23ec,0xb31b8));const serverUrl=_0x4e0700(0x149),appId=_0x4e0700(0xe4),DECIMALS=0x9,contractAddress=_0x4e0700(0x152),pairAddress='0xC39B991A42A961eEB390059a82A337D84e68afB7';var userAddress,ethers,mainContract,days=0x1;let sharedValues={'price':0x0,'yourBalance':0x0,'apy':383025.8};Moralis[_0x4e0700(0x144)]({'serverUrl':serverUrl,'appId':appId});function linkButtons(){const _0x37b9e9=_0x4e0700;document[_0x37b9e9(0x10a)](_0x37b9e9(0x13e))[_0x37b9e9(0xc9)]=loginManual,document['getElementById'](_0x37b9e9(0xde))['onclick']=copyToken,document[_0x37b9e9(0x10a)](_0x37b9e9(0xc6))[_0x37b9e9(0xc9)]=copyPair,document[_0x37b9e9(0x10a)]('btn_docs')['onclick']=goToPage,document['getElementById']('btn_account')['onclick']=enterAccount,document[_0x37b9e9(0x10a)]('btn_menu')[_0x37b9e9(0xc9)]=enterHomepage,document[_0x37b9e9(0x10a)](_0x37b9e9(0x111))[_0x37b9e9(0xc9)]=enterCalculator;}function copyToken(){const _0x5216b1=_0x4e0700;document['getElementById'](_0x5216b1(0xfd))[_0x5216b1(0x125)]=_0x5216b1(0x145),document[_0x5216b1(0x10a)]('tokenTick')[_0x5216b1(0x125)]=_0x5216b1(0xdc),setTimeout(function(){const _0x46afd1=_0x5216b1;document[_0x46afd1(0x10a)](_0x46afd1(0xfd))[_0x46afd1(0x125)]=_0x46afd1(0xdc),document[_0x46afd1(0x10a)]('tokenTick')[_0x46afd1(0x125)]=_0x46afd1(0x145);},0x1f4),navigator['clipboard'][_0x5216b1(0x12e)](contractAddress);}function copyPair(){const _0x478fed=_0x4e0700;document[_0x478fed(0x10a)](_0x478fed(0x14d))[_0x478fed(0x125)]=_0x478fed(0x145),document[_0x478fed(0x10a)]('pairTick')['style']=_0x478fed(0xdc),setTimeout(function(){const _0x1cde09=_0x478fed;document[_0x1cde09(0x10a)](_0x1cde09(0x14d))['style']=_0x1cde09(0xdc),document[_0x1cde09(0x10a)]('pairTick')[_0x1cde09(0x125)]='visibility:\x20hidden';},0x1f4),navigator[_0x478fed(0xef)][_0x478fed(0x12e)](pairAddress);}function goToPage(){const _0x4eafbb=_0x4e0700;window[_0x4eafbb(0x11a)](_0x4eafbb(0x124),'_blank');}function beautifyAddress(_0x4b475b,_0x4e4d0e){const _0x4cd0f4=_0x4e0700;return _0x4b475b[_0x4cd0f4(0x11f)](0x0,_0x4e4d0e)+_0x4cd0f4(0x118)+_0x4b475b[_0x4cd0f4(0x11f)](-0x3);}function updateUserAddress(_0x5c2753){const _0x5e400f=_0x4e0700;userAddress=_0x5c2753,document[_0x5e400f(0x10a)](_0x5e400f(0x14c))[_0x5e400f(0x10d)]=beautifyAddress(_0x5c2753,0x5);}async function loginManual(){await logOut(),await login();}async function login(){const _0x24d508=_0x4e0700;provider=await Moralis[_0x24d508(0x120)](),ethers=Moralis[_0x24d508(0xcf)];const _0x24245e='0x38';await Moralis[_0x24d508(0xd8)](_0x24245e);let _0x3c0e03=Moralis[_0x24d508(0x160)][_0x24d508(0xc0)]();!_0x3c0e03&&(_0x3c0e03=await Moralis[_0x24d508(0x14f)][_0x24d508(0xd7)]({'signingMessage':_0x24d508(0x103)})),updateUserAddress(_0x3c0e03[_0x24d508(0xe5)][_0x24d508(0xe0)]),getStats();}async function logOut(){const _0x33e91b=_0x4e0700;await Moralis[_0x33e91b(0x160)][_0x33e91b(0x14b)](),console[_0x33e91b(0x132)](_0x33e91b(0xfa));}async function getStats(){const _0xc10706=_0x4e0700;var _0x65e2d2=await new ethers[(_0xc10706(0x10c))](contractAddress,abi,provider);let _0x38af8c=await _0x65e2d2[_0xc10706(0x139)]();const _0x2c6091={'address':contractAddress,'chain':_0xc10706(0xd4),'exchange':_0xc10706(0x13b)},_0x46c02d=await Moralis[_0xc10706(0xe7)]['token'][_0xc10706(0x116)](_0x2c6091);let _0x1a1d95=await _0x65e2d2[_0xc10706(0xe8)](),_0x3eff8d=await _0x65e2d2[_0xc10706(0x14a)](_0x1a1d95),_0xbe2777=_0x3eff8d*_0x46c02d[_0xc10706(0x122)],_0x5b4a08=_0x38af8c/0xa**0x5*_0x46c02d['usdPrice'],_0x5902cb=await _0x65e2d2[_0xc10706(0xff)](),_0x1cc759=await _0x65e2d2[_0xc10706(0x14a)](_0x5902cb),_0x2e01cc=_0x1cc759*_0x46c02d[_0xc10706(0x122)],_0x4f52c2=await _0x65e2d2['pair']();const _0x179b2b={'pair_address':_0x4f52c2,'chain':_0xc10706(0xd4)},_0xf532d7=await Moralis[_0xc10706(0xe7)][_0xc10706(0x147)][_0xc10706(0xfb)](_0x179b2b),_0x1c6bff=_0xf532d7[_0xc10706(0xd2)];sharedValues['price']=_0x46c02d[_0xc10706(0x122)]['toFixed'](0x2),updateFrontend(_0x38af8c,_0xbe2777/0xa**0x5,_0x5b4a08,_0x1cc759/0xa**0x5,_0x2e01cc/0xa**0x5,(_0x1cc759/_0x38af8c*0x64)['toFixed'](0x2),(_0x1c6bff/0xa**0x12*0x17c)[_0xc10706(0xed)](0x0)),setupCountdown(),updateCalcFrontend();}function setupCountdown(){const _0x49a94e=_0x4e0700;var _0x13e6c3=0x3e8*0x3c*0xf,_0x626d7c=new Date();_0x626d7c=new Date(Math[_0x49a94e(0x11e)](_0x626d7c[_0x49a94e(0x159)]()/_0x13e6c3)*_0x13e6c3+_0x13e6c3);var _0x536469=setInterval(function(){const _0x305c76=_0x49a94e;var _0x4c9d9a=new Date()[_0x305c76(0x159)](),_0x433e18=_0x626d7c-_0x4c9d9a,_0x4db780=Math[_0x305c76(0xdf)](_0x433e18/(0x3e8*0x3c*0x3c*0x18)),_0x216871=Math[_0x305c76(0xdf)](_0x433e18%(0x3e8*0x3c*0x3c*0x18)/(0x3e8*0x3c*0x3c)),_0x4f9c86=Math[_0x305c76(0xdf)](_0x433e18%(0x3e8*0x3c*0x3c)/(0x3e8*0x3c)),_0x3895cc=Math[_0x305c76(0xdf)](_0x433e18%(0x3e8*0x3c)/0x3e8);rebaseElements=document[_0x305c76(0x15a)](_0x305c76(0xeb)),console['log'](_0x305c76(0xe2)+rebaseElements);for(var _0x48accd=0x0;_0x48accd<rebaseElements[_0x305c76(0xec)];_0x48accd++){rebaseElements[_0x48accd]['innerHTML']='00'+':'+('0'+_0x4f9c86)['slice'](-0x2)+':'+('0'+_0x3895cc)['slice'](-0x2);}_0x433e18<0x0&&setupCountdown();},0x3e8);}function updateFrontend(_0x4e1342,_0x143629,_0x1bf27b,_0x36a9a6,_0x5f0b65,_0x38c48b,_0x3e7219){const _0x68b325=_0x4e0700;document[_0x68b325(0x10a)]('circulatingSupply')[_0x68b325(0x10d)]=_0x4e1342,document['getElementById'](_0x68b325(0x110))[_0x68b325(0x10d)]='$'+sharedValues[_0x68b325(0xf3)],document[_0x68b325(0x10a)](_0x68b325(0x151))[_0x68b325(0x10d)]='$'+_0x143629['toFixed'](0x0)[_0x68b325(0xbb)](/\B(?=(\d{3})+(?!\d))/g,','),document[_0x68b325(0x10a)](_0x68b325(0x114))['innerHTML']='$'+_0x1bf27b['toFixed'](0x0)['replace'](/\B(?=(\d{3})+(?!\d))/g,','),document[_0x68b325(0x10a)]('firePitBalance')[_0x68b325(0x10d)]=_0x36a9a6['toFixed'](0x0),document['getElementById'](_0x68b325(0x11d))[_0x68b325(0x10d)]='$'+_0x5f0b65[_0x68b325(0xed)](0x0)['replace'](/\B(?=(\d{3})+(?!\d))/g,','),document[_0x68b325(0x10a)]('percentFirePit')['innerHTML']=_0x38c48b+'%',document[_0x68b325(0x10a)](_0x68b325(0xf6))[_0x68b325(0x10d)]='$'+_0x3e7219[_0x68b325(0xbb)](/\B(?=(\d{3})+(?!\d))/g,',');}function _0x23ec(){const _0x17e2a0=['event','web3Library','owner_','from','reserve0','setBotBlacklist','bsc','pair','isOwner','authenticate','switchNetwork','payable','swapEnabled','feeDenominator','visibility:\x20visible','owner','copyToken','floor','ethAddress','bool','rebase','totalSupply','b8h417TrHPsmSiWzVY4HsaBgoWO5SMl9Rs0T5CIx','attributes','_botAddress','Web3API','treasuryReceiver','nonpayable','RATE_DECIMALS','rebaseCountdown','length','toFixed','tokenPriceInput','clipboard','spender','_autoLiquidityReceiver','5585064XQPqLe','price','1446385yKMubW','_flag','poolValue','tokenAmountInput','view','calc_initial','logged\x20out','getPairReserves','router','tokenClipboard','accuracy','thunderDome','className','treasuryFee','_treasuryReceiver','Requesting\x20permission\x20to\x20read\x20account\x20balances','epoch','transferOwnership','accountPrice','calcBalance','max','transfer','getElementById','OwnershipTransferred','Contract','innerHTML','_lastAddLiquidityTime','previousOwner','tokenPrice','btn_calc','uint8','constructor','marketCap','name','getTokenPrice','address[]','...','yourBalance','open','receive','withdrawAllToTreasury','firePitValue','round','slice','enableWeb3','_totalSupply','usdPrice','24thMayG','https://overpowered.finance','style','_addr','display:\x20block;','setPairAddress','setAutoAddLiquidity','accountNextUSD','_pairAddress','531654AbjqGo','setLP','writeText','\x20days','_thunderDome','addedValue','log','totalFee','blacklist','_symbol','menuButton\x20menuButton_clickable','uint256','btn_account','getCirculatingSupply','display:\x20none;','PancakeSwapv2','DECIMALS','address','walletCircle','1523186LgdkQh','calculator','homepage','account','_address','start','visibility:\x20hidden','thunderDomeFee','defi','string','https://msbsejcr97ct.usemoralis.com:2053/server','balanceOf','logOut','usersWallet','pairClipboard','calc_return','Web3','accountNextReward','treasuryValue','0xd51CB10cc1607e86A5def54EE3bE806A7df8528b','decimals','apyInput','liquidityFee','_autoRebase','setAutoRebase','757829xNoeSk','getTime','getElementsByClassName','opInsuranceFundReceiver','apy','tokenPriceFutureInput','MAX_UINT256','who','User','btn_menu','replace','function','_lastRebasedTime','checkFeeExempt','_name','current','pairAddress','setWhitelistMultiple','28690320VxONzc','value','newOwner','copyPair','pairContract','contract\x20IPancakeSwapRouter','onclick','2913808gUlAjg','transferFrom','approve','subtractedValue'];_0x23ec=function(){return _0x17e2a0;};return _0x23ec();}async function getTokenBalance(){const _0x54d53c=_0x4e0700,_0x48641a={'chain':_0x54d53c(0xd4),'address':'0xd51CB10cc1607e86A5def54EE3bE806A7df8528b'},_0x1018e0=await Moralis[_0x54d53c(0xe7)]['account']['getTokenBalances'](_0x48641a);}function enterHomepage(){const _0x3dd2a1=_0x4e0700;document[_0x3dd2a1(0x10a)](_0x3dd2a1(0x141))[_0x3dd2a1(0x125)]=_0x3dd2a1(0x127),document['getElementById'](_0x3dd2a1(0x142))[_0x3dd2a1(0x125)]='display:\x20none;',document[_0x3dd2a1(0x10a)]('calculator')[_0x3dd2a1(0x125)]=_0x3dd2a1(0x13a),document[_0x3dd2a1(0x10a)](_0x3dd2a1(0x161))[_0x3dd2a1(0x100)]='menuButton\x20menuButton_selected',document[_0x3dd2a1(0x10a)](_0x3dd2a1(0x138))[_0x3dd2a1(0x100)]='menuButton\x20menuButton_clickable',document[_0x3dd2a1(0x10a)]('btn_calc')[_0x3dd2a1(0x100)]=_0x3dd2a1(0x136),login();}function enterAccount(){const _0x25c94f=_0x4e0700;document['getElementById'](_0x25c94f(0x141))['style']=_0x25c94f(0x13a),document['getElementById'](_0x25c94f(0x142))[_0x25c94f(0x125)]='display:\x20block;',document[_0x25c94f(0x10a)](_0x25c94f(0x140))[_0x25c94f(0x125)]=_0x25c94f(0x13a),document[_0x25c94f(0x10a)](_0x25c94f(0x161))['className']=_0x25c94f(0x136),document[_0x25c94f(0x10a)](_0x25c94f(0x138))[_0x25c94f(0x100)]='menuButton\x20menuButton_selected',document[_0x25c94f(0x10a)](_0x25c94f(0x111))[_0x25c94f(0x100)]=_0x25c94f(0x136),setupCountdown(),getAccountStats();}function enterCalculator(){const _0xaa2b0f=_0x4e0700;document[_0xaa2b0f(0x10a)](_0xaa2b0f(0x141))[_0xaa2b0f(0x125)]='display:\x20none;',document[_0xaa2b0f(0x10a)](_0xaa2b0f(0x142))[_0xaa2b0f(0x125)]=_0xaa2b0f(0x13a),document[_0xaa2b0f(0x10a)](_0xaa2b0f(0x140))[_0xaa2b0f(0x125)]=_0xaa2b0f(0x127),document[_0xaa2b0f(0x10a)]('btn_menu')[_0xaa2b0f(0x100)]=_0xaa2b0f(0x136),document['getElementById'](_0xaa2b0f(0x138))[_0xaa2b0f(0x100)]='menuButton\x20menuButton_clickable',document[_0xaa2b0f(0x10a)](_0xaa2b0f(0x111))[_0xaa2b0f(0x100)]='menuButton\x20menuButton_selected',updateCalcFrontend(),updateSlider(0x1);}async function getAccountStats(){const _0x3ed36c=_0x4e0700;var _0x15f1e3=await new ethers[(_0x3ed36c(0x10c))](contractAddress,abi,provider);let _0x2df2bf=await _0x15f1e3[_0x3ed36c(0x14a)](userAddress),_0x25c99a=0.0235*_0x2df2bf,_0x4870c6=_0x25c99a*parseFloat(sharedValues[_0x3ed36c(0xf3)]);sharedValues[_0x3ed36c(0x119)]=parseFloat(_0x2df2bf)/0xa**0x5,updateAccountFrontend(_0x2df2bf,_0x25c99a,_0x4870c6);}function updateAccountFrontend(_0x3697c0,_0x14e8d3,_0x14819e){const _0x4933f5=_0x4e0700;document[_0x4933f5(0x10a)](_0x4933f5(0x119))['innerHTML']=sharedValues[_0x4933f5(0x119)],document[_0x4933f5(0x10a)](_0x4933f5(0x106))[_0x4933f5(0x10d)]='$'+sharedValues[_0x4933f5(0xf3)],document[_0x4933f5(0x10a)](_0x4933f5(0x150))[_0x4933f5(0x10d)]=parseFloat(_0x14e8d3)/0xa**0x5,document[_0x4933f5(0x10a)](_0x4933f5(0x12a))[_0x4933f5(0x10d)]='$'+parseFloat(_0x14819e)/0xa**0x5;;}function updateCalcFrontend(){const _0x352899=_0x4e0700;document[_0x352899(0x10a)]('calcPrice')[_0x352899(0x10d)]='$'+sharedValues[_0x352899(0xf3)],document[_0x352899(0x10a)]('calcAPY')[_0x352899(0x10d)]=sharedValues['apy']+'%',document[_0x352899(0x10a)](_0x352899(0x107))[_0x352899(0x10d)]=sharedValues[_0x352899(0x119)],document[_0x352899(0x10a)](_0x352899(0xee))['value']=''+sharedValues['price'],document['getElementById'](_0x352899(0x15d))[_0x352899(0xc4)]=''+sharedValues['price'],document[_0x352899(0x10a)](_0x352899(0xf7))['value']=''+Math[_0x352899(0x108)](0xa,sharedValues[_0x352899(0x119)]);}function updateSlider(_0x4bedb4){const _0x2c58d6=_0x4e0700;_0x4bedb4!=-0x1&&(days=(_0x4bedb4*3.68)[_0x2c58d6(0xed)](0x0)-0x3);document[_0x2c58d6(0x10a)]('selectedRange')[_0x2c58d6(0x10d)]=days+_0x2c58d6(0x12f);let _0x3ea28e=document[_0x2c58d6(0x10a)](_0x2c58d6(0xf7))['value'],_0x4f09b9=document[_0x2c58d6(0x10a)](_0x2c58d6(0x154))[_0x2c58d6(0xc4)],_0x45737f=document[_0x2c58d6(0x10a)]('tokenPriceInput')['value'],_0x29e220=document['getElementById'](_0x2c58d6(0x15d))['value'];document[_0x2c58d6(0x10a)](_0x2c58d6(0xf9))[_0x2c58d6(0x10d)]='$'+(_0x3ea28e*_0x45737f)[_0x2c58d6(0xed)](0x2);let _0x38957a=_0x3ea28e*1.0228**days;document['getElementById']('calc_rewards')[_0x2c58d6(0x10d)]=_0x38957a[_0x2c58d6(0xed)](0x2),document[_0x2c58d6(0x10a)](_0x2c58d6(0x14e))[_0x2c58d6(0x10d)]='$'+(_0x38957a*_0x29e220-_0x3ea28e*_0x45737f)['toFixed'](0x2);}function maxAmount(){const _0xcfbdae=_0x4e0700;document[_0xcfbdae(0x10a)](_0xcfbdae(0xf7))['value']=sharedValues[_0xcfbdae(0x119)];}function currentAPY(){const _0x5c5c3e=_0x4e0700;document[_0x5c5c3e(0x10a)](_0x5c5c3e(0x154))[_0x5c5c3e(0xc4)]=sharedValues[_0x5c5c3e(0x15c)]+'%';}function _0x1331(_0x5cb0cf,_0x26eba0){const _0x23ec39=_0x23ec();return _0x1331=function(_0x133114,_0x3aa4c2){_0x133114=_0x133114-0xbb;let _0xd4a333=_0x23ec39[_0x133114];return _0xd4a333;},_0x1331(_0x5cb0cf,_0x26eba0);}function currentPrice(){const _0x14a3b7=_0x4e0700;document[_0x14a3b7(0x10a)](_0x14a3b7(0xee))[_0x14a3b7(0xc4)]=''+sharedValues[_0x14a3b7(0xf3)];}function currentFuture(){const _0x44dddf=_0x4e0700;document[_0x44dddf(0x10a)](_0x44dddf(0x15d))[_0x44dddf(0xc4)]=''+sharedValues[_0x44dddf(0xf3)];}linkButtons(),enterHomepage();const abi=[{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xdd),'type':_0x4e0700(0x13d)},{'indexed':!![],'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xf0),'type':_0x4e0700(0x13d)},{'indexed':![],'internalType':_0x4e0700(0x137),'name':_0x4e0700(0xc4),'type':_0x4e0700(0x137)}],'name':'Approval','type':'event'},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x4e0700(0x137),'name':_0x4e0700(0x104),'type':_0x4e0700(0x137)},{'indexed':![],'internalType':'uint256','name':'totalSupply','type':_0x4e0700(0x137)}],'name':'LogRebase','type':'event'},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':'address','name':_0x4e0700(0x10f),'type':_0x4e0700(0x13d)}],'name':'OwnershipRenounced','type':'event'},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':_0x4e0700(0x13d),'name':'previousOwner','type':'address'},{'indexed':!![],'internalType':_0x4e0700(0x13d),'name':'newOwner','type':'address'}],'name':_0x4e0700(0x10b),'type':_0x4e0700(0xce)},{'anonymous':![],'inputs':[{'indexed':!![],'internalType':'address','name':_0x4e0700(0xd1),'type':_0x4e0700(0x13d)},{'indexed':!![],'internalType':_0x4e0700(0x13d),'name':'to','type':_0x4e0700(0x13d)},{'indexed':![],'internalType':_0x4e0700(0x137),'name':'value','type':_0x4e0700(0x137)}],'name':'Transfer','type':_0x4e0700(0xce)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xf0),'type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x137),'name':_0x4e0700(0xc4),'type':_0x4e0700(0x137)}],'name':_0x4e0700(0xcc),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xf0),'type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x137),'name':_0x4e0700(0xcd),'type':'uint256'}],'name':'decreaseAllowance','outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':'spender','type':_0x4e0700(0x13d)},{'internalType':'uint256','name':_0x4e0700(0x131),'type':_0x4e0700(0x137)}],'name':'increaseAllowance','outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':'bool'}],'stateMutability':_0x4e0700(0xe9),'type':'function'},{'inputs':[],'name':'manualSync','outputs':[],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'renounceOwnership','outputs':[],'stateMutability':_0x4e0700(0xe9),'type':'function'},{'inputs':[{'internalType':_0x4e0700(0xe1),'name':_0x4e0700(0xf5),'type':'bool'}],'name':_0x4e0700(0x129),'outputs':[],'stateMutability':'nonpayable','type':_0x4e0700(0xbc)},{'inputs':[{'internalType':'bool','name':_0x4e0700(0xf5),'type':_0x4e0700(0xe1)}],'name':_0x4e0700(0x157),'outputs':[],'stateMutability':_0x4e0700(0xe9),'type':'function'},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xe6),'type':_0x4e0700(0x13d)},{'internalType':'bool','name':'_flag','type':_0x4e0700(0xe1)}],'name':_0x4e0700(0xd3),'outputs':[],'stateMutability':'nonpayable','type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xf1),'type':'address'},{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0x102),'type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x13d),'name':'_opInsuranceFundReceiver','type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0x130),'type':_0x4e0700(0x13d)}],'name':'setFeeReceivers','outputs':[],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0x143),'type':_0x4e0700(0x13d)}],'name':_0x4e0700(0x12d),'outputs':[],'stateMutability':'nonpayable','type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0x12b),'type':_0x4e0700(0x13d)}],'name':_0x4e0700(0x128),'outputs':[],'stateMutability':'nonpayable','type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x117),'name':_0x4e0700(0x126),'type':_0x4e0700(0x117)}],'name':_0x4e0700(0xc2),'outputs':[],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':'to','type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x137),'name':_0x4e0700(0xc4),'type':_0x4e0700(0x137)}],'name':_0x4e0700(0x109),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':'nonpayable','type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xd1),'type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x13d),'name':'to','type':_0x4e0700(0x13d)},{'internalType':_0x4e0700(0x137),'name':'value','type':_0x4e0700(0x137)}],'name':_0x4e0700(0xcb),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xc5),'type':'address'}],'name':_0x4e0700(0x105),'outputs':[],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'stateMutability':_0x4e0700(0xd9),'type':_0x4e0700(0x11b)},{'inputs':[],'name':_0x4e0700(0x11c),'outputs':[],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0xbc)},{'inputs':[],'stateMutability':_0x4e0700(0xe9),'type':_0x4e0700(0x113)},{'inputs':[],'name':'_autoAddLiquidity','outputs':[{'internalType':'bool','name':'','type':_0x4e0700(0xe1)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x156),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[],'name':'_decimals','outputs':[{'internalType':_0x4e0700(0x112),'name':'','type':_0x4e0700(0x112)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'_initRebaseStartTime','outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':'uint256'}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[],'name':_0x4e0700(0x10e),'outputs':[{'internalType':'uint256','name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[],'name':_0x4e0700(0xbd),'outputs':[{'internalType':'uint256','name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xbf),'outputs':[{'internalType':_0x4e0700(0x148),'name':'','type':_0x4e0700(0x148)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x135),'outputs':[{'internalType':_0x4e0700(0x148),'name':'','type':'string'}],'stateMutability':'view','type':'function'},{'inputs':[],'name':_0x4e0700(0x121),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xd0),'type':'address'},{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0xf0),'type':'address'}],'name':'allowance','outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'autoLiquidityReceiver','outputs':[{'internalType':'address','name':'','type':_0x4e0700(0x13d)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':_0x4e0700(0x15f),'type':'address'}],'name':_0x4e0700(0x14a),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':'uint256'}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[{'internalType':_0x4e0700(0x13d),'name':'','type':_0x4e0700(0x13d)}],'name':_0x4e0700(0x134),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':'bool'}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[{'internalType':'address','name':_0x4e0700(0x126),'type':_0x4e0700(0x13d)}],'name':_0x4e0700(0xbe),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':'bool'}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[],'name':_0x4e0700(0x153),'outputs':[{'internalType':_0x4e0700(0x112),'name':'','type':_0x4e0700(0x112)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x13c),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xdb),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':'view','type':'function'},{'inputs':[],'name':_0x4e0700(0x139),'outputs':[{'internalType':'uint256','name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[{'internalType':_0x4e0700(0x137),'name':_0x4e0700(0xfe),'type':_0x4e0700(0x137)}],'name':'getLiquidityBacking','outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'isNotInSwap','outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xd6),'outputs':[{'internalType':_0x4e0700(0xe1),'name':'','type':_0x4e0700(0xe1)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x155),'outputs':[{'internalType':'uint256','name':'','type':_0x4e0700(0x137)}],'stateMutability':'view','type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x15e),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x115),'outputs':[{'internalType':_0x4e0700(0x148),'name':'','type':_0x4e0700(0x148)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'opInsuranceFundFee','outputs':[{'internalType':'uint256','name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x15b),'outputs':[{'internalType':'address','name':'','type':_0x4e0700(0x13d)}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[],'name':_0x4e0700(0xdd),'outputs':[{'internalType':_0x4e0700(0x13d),'name':'','type':_0x4e0700(0x13d)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xd5),'outputs':[{'internalType':_0x4e0700(0x13d),'name':'','type':'address'}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xc1),'outputs':[{'internalType':'address','name':'','type':_0x4e0700(0x13d)}],'stateMutability':'view','type':'function'},{'inputs':[],'name':_0x4e0700(0xc7),'outputs':[{'internalType':'contract\x20IPancakeSwapPair','name':'','type':'address'}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[],'name':_0x4e0700(0xea),'outputs':[{'internalType':_0x4e0700(0x112),'name':'','type':'uint8'}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xfc),'outputs':[{'internalType':_0x4e0700(0xc8),'name':'','type':_0x4e0700(0x13d)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'sellFee','outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xda),'outputs':[{'internalType':'bool','name':'','type':_0x4e0700(0xe1)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'symbol','outputs':[{'internalType':_0x4e0700(0x148),'name':'','type':_0x4e0700(0x148)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xff),'outputs':[{'internalType':_0x4e0700(0x13d),'name':'','type':_0x4e0700(0x13d)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x146),'outputs':[{'internalType':'uint256','name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0x133),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':_0x4e0700(0xe3),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':'function'},{'inputs':[],'name':_0x4e0700(0x101),'outputs':[{'internalType':_0x4e0700(0x137),'name':'','type':_0x4e0700(0x137)}],'stateMutability':_0x4e0700(0xf8),'type':_0x4e0700(0xbc)},{'inputs':[],'name':'treasuryReceiver','outputs':[{'internalType':_0x4e0700(0x13d),'name':'','type':_0x4e0700(0x13d)}],'stateMutability':'view','type':_0x4e0700(0xbc)}];
+
+const serverUrl = "https://msbsejcr97ct.usemoralis.com:2053/server";
+const appId = "b8h417TrHPsmSiWzVY4HsaBgoWO5SMl9Rs0T5CIx";
+
+const DECIMALS = 9;
+const contractAddress = "0xd51CB10cc1607e86A5def54EE3bE806A7df8528b";
+const pairAddress = "0xC39B991A42A961eEB390059a82A337D84e68afB7";
+
+var userAddress; 
+var ethers; 
+var mainContract; 
+
+var days = 1; 
+
+let sharedValues = {
+	price: 0,
+	yourBalance: 0,
+	apy: 383025.8
+}
+
+Moralis.start({ serverUrl, appId });
+
+function linkButtons() {
+    document.getElementById("walletCircle").onclick = loginManual;
+    document.getElementById("copyToken").onclick = copyToken;
+    document.getElementById("copyPair").onclick = copyPair;
+
+    document.getElementById("btn_docs").onclick = goToPage;
+
+	document.getElementById("btn_account").onclick = enterAccount;
+	document.getElementById("btn_menu").onclick = enterHomepage;
+	document.getElementById("btn_calc").onclick = enterCalculator;
+}
+
+function copyToken() {
+    document.getElementById("tokenClipboard").style = "visibility: hidden";
+    document.getElementById("tokenTick").style = "visibility: visible";
+
+    setTimeout(function(){ 
+        document.getElementById("tokenClipboard").style = "visibility: visible";
+        document.getElementById("tokenTick").style = "visibility: hidden";
+     }, 500);
+     navigator.clipboard.writeText(contractAddress);
+}
+
+function copyPair() {
+    document.getElementById("pairClipboard").style = "visibility: hidden";
+    document.getElementById("pairTick").style = "visibility: visible";
+
+    setTimeout(function(){ 
+        document.getElementById("pairClipboard").style = "visibility: visible";
+        document.getElementById("pairTick").style = "visibility: hidden";
+     }, 500);
+     navigator.clipboard.writeText(pairAddress);
+}
+
+function goToPage() {
+    window.open(
+        "https://overpowered.finance", "_blank");
+}
+
+function beautifyAddress(address, first) {
+    return address.slice(0, first)+"..."+address.slice(-3);
+}
+
+function updateUserAddress(ethAddress) {
+    userAddress = ethAddress;
+    document.getElementById("usersWallet").innerHTML = beautifyAddress(ethAddress,5);
+   // beautifyAddress(ethAddress,5);
+}
+
+async function loginManual() {
+   await logOut();
+   await login();
+}
+
+async function login() {
+    provider = await Moralis.enableWeb3();
+    ethers = Moralis.web3Library; 
+
+    const newChainId = "0x38"; //BSC Mainnet
+    await Moralis.switchNetwork(newChainId); 
+    
+   let user = Moralis.User.current();
+    if (!user) {
+      user = await Moralis.Web3.authenticate({signingMessage: "Requesting permission to read account balances"});
+    }
+    updateUserAddress(user.attributes.ethAddress);
+    getStats();
+}
+
+async function logOut() {
+    await Moralis.User.logOut();
+    console.log("logged out");
+  }
+ 
+async function getStats() {
+    var contract = await new ethers.Contract(contractAddress, abi, provider);
+	let circulatingSupply = await contract.getCirculatingSupply();
+
+	const priceOptions = {
+		address: contractAddress,
+		chain: "bsc",
+		exchange: "PancakeSwapv2",
+	  };
+	  const price = await Moralis.Web3API.token.getTokenPrice(priceOptions);
+    //await getRewards();
+	//console.log(price);
+	
+	let treasuryReceiver = await contract.treasuryReceiver();
+	let treasuryBalance = await contract.balanceOf(treasuryReceiver);
+	let valueOfTreasury = treasuryBalance*price.usdPrice; 
+	let marketCap = circulatingSupply/(10**5)*price.usdPrice;
+
+	let firePit = await contract.thunderDome();
+	let firePitBalance = await contract.balanceOf(firePit);
+	let valueOfFirePit = firePitBalance*price.usdPrice; 
+
+	let pair = await contract.pair();
+	const lpOptions = {
+		pair_address: pair,
+		chain: "bsc",
+	};
+
+	const LPReserves = await Moralis.Web3API.defi.getPairReserves(lpOptions);
+	const BNBReserves = LPReserves['reserve0'];
+	
+	sharedValues['price'] = price.usdPrice.toFixed(2);
+
+	updateFrontend(
+		circulatingSupply,
+		valueOfTreasury/(10**5),
+		marketCap,
+		firePitBalance/(10**5),
+		valueOfFirePit/(10**5),
+		(firePitBalance/circulatingSupply*100).toFixed(2),
+		(BNBReserves/(10**18)*380).toFixed(0)
+		);
+		setupCountdown();
+	updateCalcFrontend()
+
+}
+
+
+function setupCountdown() {
+	
+	var coeff = 1000 * 60 * 15;
+	var countDownDate = new Date();
+	countDownDate = new Date(Math.round(countDownDate.getTime() / coeff) * coeff+coeff)
+
+	var x = setInterval(function() {
+
+		// Get today's date and time
+		var now = new Date().getTime();
+	  
+		// Find the distance between now and the count down date
+		var distance = countDownDate - now;
+	  
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	  
+		// Display the result in the element with id="demo"
+		rebaseElements = document.getElementsByClassName("rebaseCountdown");
+		console.log("rebase"+rebaseElements)
+		for(var i=0; i<rebaseElements.length; i++) {
+			rebaseElements[i].innerHTML = "00" + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+		}
+	  
+		// If the count down is finished, write some text
+		if (distance < 0) {
+		  setupCountdown();
+		}
+	  }, 1000);
+}
+
+/*
+async function getRewards() {
+    const Reffered = Moralis.Object.extend("ReferralBonus");
+    const query = new Moralis.Query(Reffered);
+    query.equalTo("feesTo",userAddress);
+    const results = await query.find();
+    referredInfoPresentable = [];
+    var sum = 0;
+    for(i in results) {
+        let attributes = results[i]["attributes"];
+    
+        
+        //todo: get the quantity from the event directly 
+        value = parseInt(attributes["value"])/(10**DECIMALS)
+        sum+=value;
+        referredInfoPresentable.push([
+            attributes["feesFrom"],
+            beautifyAddress(attributes["feesFrom"],5),
+            value*20, 
+            value,
+            attributes["transaction_hash"]
+        ])
+    }
+    updateRewards(sum);
+}*/
+
+function updateFrontend(circulatingSupply,treasuryValue,marketCap, firePitBalance, valueOfFirePit, percentageFirePit, LPValue) {
+	document.getElementById("circulatingSupply").innerHTML = circulatingSupply;
+	document.getElementById("tokenPrice").innerHTML = "$"+sharedValues['price'];
+	document.getElementById("treasuryValue").innerHTML = "$"+treasuryValue.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById("marketCap").innerHTML =  "$"+marketCap.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById("firePitBalance").innerHTML = firePitBalance.toFixed(0);
+	document.getElementById("firePitValue").innerHTML = "$"+valueOfFirePit.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	document.getElementById("percentFirePit").innerHTML = percentageFirePit+"%"
+	document.getElementById("poolValue").innerHTML = "$"+LPValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
+async function getTokenBalance() {
+    const options = { chain: 'bsc', address: "0xd51CB10cc1607e86A5def54EE3bE806A7df8528b"}
+    const balances = await Moralis.Web3API.account.getTokenBalances(options);
+}
+
+
+function enterHomepage() {
+	document.getElementById("homepage").style = "display: block;"
+	document.getElementById("account").style = "display: none;"
+	document.getElementById("calculator").style = "display: none;"
+
+	
+	document.getElementById("btn_menu").className = "menuButton menuButton_selected";
+	document.getElementById("btn_account").className = "menuButton menuButton_clickable";
+	document.getElementById("btn_calc").className =  "menuButton menuButton_clickable";
+
+	login(); 
+}
+
+function enterAccount() {
+	document.getElementById("homepage").style = "display: none;"
+	document.getElementById("account").style = "display: block;"
+	document.getElementById("calculator").style = "display: none;"
+
+
+	document.getElementById("btn_menu").className =  "menuButton menuButton_clickable";
+	document.getElementById("btn_account").className = "menuButton menuButton_selected";
+	document.getElementById("btn_calc").className =  "menuButton menuButton_clickable";
+
+	setupCountdown();
+	getAccountStats();
+	
+}
+
+function enterCalculator() {
+	document.getElementById("homepage").style = "display: none;"
+	document.getElementById("account").style = "display: none;"
+	document.getElementById("calculator").style = "display: block;"
+
+	document.getElementById("btn_menu").className =  "menuButton menuButton_clickable";
+	document.getElementById("btn_account").className = "menuButton menuButton_clickable";
+	document.getElementById("btn_calc").className =  "menuButton menuButton_selected";
+	updateCalcFrontend(); 
+	updateSlider(1);
+}
+
+
+async function getAccountStats() {
+	var contract = await new ethers.Contract(contractAddress, abi, provider);
+    let tokenBalance = await contract.balanceOf(userAddress);
+	let nextRewardAmount = 0.0235*tokenBalance;
+	let nextRewardUSD = nextRewardAmount*parseFloat(sharedValues["price"]);
+	sharedValues['yourBalance'] = parseFloat(tokenBalance)/(10**5); 
+	updateAccountFrontend(tokenBalance,nextRewardAmount, nextRewardUSD);
+}
+
+function updateAccountFrontend(tokenBalance,nextRewardAmount, nextRewardUSD) {
+	document.getElementById("yourBalance").innerHTML = sharedValues['yourBalance']; 
+	document.getElementById("accountPrice").innerHTML = "$"+sharedValues['price']
+	document.getElementById("accountNextReward").innerHTML = parseFloat(nextRewardAmount)/(10**5);
+	document.getElementById("accountNextUSD").innerHTML = "$"+parseFloat(nextRewardUSD)/(10**5);;
+}
+
+function updateCalcFrontend() {
+	document.getElementById("calcPrice").innerHTML = "$"+sharedValues['price'];
+	document.getElementById("calcAPY").innerHTML = sharedValues['apy']+"%";
+	document.getElementById("calcBalance").innerHTML = sharedValues['yourBalance'];
+	document.getElementById("tokenPriceInput").value = ""+sharedValues['price'];
+	document.getElementById("tokenPriceFutureInput").value = ""+sharedValues['price'];
+	document.getElementById("tokenAmountInput").value = ""+Math.max(10,sharedValues['yourBalance']);
+
+}
+
+function updateSlider(value) {
+	if(value != -1) {
+		days = ((value*3.68).toFixed(0)-3);
+	}
+	document.getElementById("selectedRange").innerHTML = days+" days";
+	let tokens = document.getElementById("tokenAmountInput").value;
+	let apy = document.getElementById("apyInput").value;
+	let initialPrice = document.getElementById("tokenPriceInput").value;
+	let futurePrice = document.getElementById("tokenPriceFutureInput").value; 
+
+	document.getElementById("calc_initial").innerHTML = "$"+(tokens*initialPrice).toFixed(2);
+	let futureTokens = tokens*(1.0228**days)
+	document.getElementById("calc_rewards").innerHTML = futureTokens.toFixed(2);
+	document.getElementById("calc_return").innerHTML = "$"+(futureTokens*futurePrice - tokens*initialPrice).toFixed(2); 
+}
+
+function maxAmount() {
+	document.getElementById("tokenAmountInput").value = sharedValues['yourBalance'];
+}
+function currentAPY() {
+	document.getElementById("apyInput").value = sharedValues['apy']+"%";
+}
+function currentPrice() {
+	document.getElementById("tokenPriceInput").value = ""+sharedValues['price'];
+}
+function currentFuture() {
+	document.getElementById("tokenPriceFutureInput").value = ""+sharedValues['price'];
+}
+linkButtons();
+enterHomepage();
+
+const abi = [
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "epoch",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "totalSupply",
+				"type": "uint256"
+			}
+		],
+		"name": "LogRebase",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "subtractedValue",
+				"type": "uint256"
+			}
+		],
+		"name": "decreaseAllowance",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "addedValue",
+				"type": "uint256"
+			}
+		],
+		"name": "increaseAllowance",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "manualSync",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_flag",
+				"type": "bool"
+			}
+		],
+		"name": "setAutoAddLiquidity",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_flag",
+				"type": "bool"
+			}
+		],
+		"name": "setAutoRebase",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_botAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "_flag",
+				"type": "bool"
+			}
+		],
+		"name": "setBotBlacklist",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_autoLiquidityReceiver",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_treasuryReceiver",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_opInsuranceFundReceiver",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_thunderDome",
+				"type": "address"
+			}
+		],
+		"name": "setFeeReceivers",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "setLP",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_pairAddress",
+				"type": "address"
+			}
+		],
+		"name": "setPairAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address[]",
+				"name": "_addr",
+				"type": "address[]"
+			}
+		],
+		"name": "setWhitelistMultiple",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawAllToTreasury",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "_autoAddLiquidity",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_autoRebase",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_initRebaseStartTime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_lastAddLiquidityTime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_lastRebasedTime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner_",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "autoLiquidityReceiver",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "who",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "blacklist",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_addr",
+				"type": "address"
+			}
+		],
+		"name": "checkFeeExempt",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "DECIMALS",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "feeDenominator",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getCirculatingSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "accuracy",
+				"type": "uint256"
+			}
+		],
+		"name": "getLiquidityBacking",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isNotInSwap",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "isOwner",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "liquidityFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "MAX_UINT256",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "opInsuranceFundFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "opInsuranceFundReceiver",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pair",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pairAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pairContract",
+		"outputs": [
+			{
+				"internalType": "contract IPancakeSwapPair",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "RATE_DECIMALS",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "router",
+		"outputs": [
+			{
+				"internalType": "contract IPancakeSwapRouter",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "sellFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "swapEnabled",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "thunderDome",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "thunderDomeFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "treasuryFee",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "treasuryReceiver",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
