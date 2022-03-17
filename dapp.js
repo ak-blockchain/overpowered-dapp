@@ -271,7 +271,7 @@ async function getAccountStats() {
 }
 
 function updateAccountFrontend(tokenBalance,nextRewardAmount, nextRewardUSD) {
-	document.getElementById("yourBalance").innerHTML = sharedValues['yourBalance']; 
+	document.getElementById("yourBalance").innerHTML = parseFloat(tokenBalance)/(10**DECIMALS);  
 	document.getElementById("accountPrice").innerHTML = "$"+sharedValues['price']
 	document.getElementById("accountNextReward").innerHTML = parseFloat(nextRewardAmount)/(10**5);
 	document.getElementById("accountNextUSD").innerHTML = "$"+parseFloat(nextRewardUSD)/(10**5);;
