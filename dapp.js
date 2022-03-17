@@ -264,7 +264,7 @@ function enterCalculator() {
 async function getAccountStats() {
 	var contract = await new ethers.Contract(contractAddress, abi, provider);
     let tokenBalance = await contract.balanceOf(userAddress);
-	let nextRewardAmount = 0.000235*tokenBalance;
+	let nextRewardAmount = 0.0235*tokenBalance;
 	let nextRewardUSD = nextRewardAmount*parseFloat(sharedValues["price"]);
 	sharedValues['yourBalance'] = parseFloat(tokenBalance)/(10**5); 
 	updateAccountFrontend(tokenBalance,nextRewardAmount, nextRewardUSD);
@@ -273,8 +273,8 @@ async function getAccountStats() {
 function updateAccountFrontend(tokenBalance,nextRewardAmount, nextRewardUSD) {
 	document.getElementById("yourBalance").innerHTML = parseFloat(tokenBalance)/(10**DECIMALS);  
 	document.getElementById("accountPrice").innerHTML = "$"+sharedValues['price']
-	document.getElementById("accountNextReward").innerHTML = parseFloat(nextRewardAmount)/(10**5);
-	document.getElementById("accountNextUSD").innerHTML = "$"+parseFloat(nextRewardUSD)/(10**5);;
+	document.getElementById("accountNextReward").innerHTML = parseFloat(nextRewardAmount)/(10**7);
+	document.getElementById("accountNextUSD").innerHTML = "$"+parseFloat(nextRewardUSD)/(10**7);;
 }
 
 function updateCalcFrontend() {
